@@ -15,6 +15,9 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 - As a player, I want a clear way to be able to exit the game and restart the adventure.
 - As a player, I want to be able to see my score tally, depending on my choices, and how far in the game I made it compared to other players.
 
+### Flowchart for story line:
+![Lucidchart Diagram](.devcontainer/assets/readme-images/game-flowchart.png)
+
 ## Reminders
 
 - Your code must be placed in the `run.py` file
