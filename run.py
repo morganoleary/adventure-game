@@ -4,6 +4,7 @@ def start_game():
     User must choose an option
     """
     print("_________________________")
+    print("_________________________")
     print("\nWelcome to the end of the world as we know it.")
     print("You have the option to either go to Mars and start a new world")
     print("or stay on Earth for it's final 5 years.\n")
@@ -19,7 +20,7 @@ def start_game():
             break
         elif location_choice == "B":
             print("__________")
-            print("You are staying on Earth!")
+            print("Earth it is!")
             stay_on_earth()
             break
         else:
@@ -32,15 +33,19 @@ def gain_one_point():
     Function to add one point to score
     and update leaderboard
     """
+    print("_________________________")
     print("*** You managed to stay alive. Earn one point. ***")
+    print("_________________________")
 
 
 def lose_one_point():
     """
     Function to remove one point from score
-    and update leaderboard
+    and update leaderboard. Game is over.
     """
+    print("_________________________")
     print("*** You didn't make it... Lose one point. ***")
+    print("_________________________")
     print("Sorry, game over.")
 
 
@@ -51,9 +56,31 @@ def go_to_mars():
     """
     gain_one_point()
 
-    print("_________________________")
     print("Now, the thing about Mars is...")
-    print("No one knew there were aliens already living there!")
+    print("No one knew there were already aliens living there!")
+    print("\n... The next day you are packed onto a space shuttle")
+    print("and become one of the first people to land on Mars.")
+    print("\nThe air is cold and damp and it's so dark you can barely")
+    print("make out shadows in the distance. There are strange, long")
+    print("creatures coming towards you at an alarming speed!\n")
+    print("You have one chance to change your mind.")
+    print("Do you A= Stay and wait to see what happens, or ")
+    print("B= Sneak back on the space shuttle and go back to Earth?")
+    
+    while True:
+        decision_one = input("What do you want to do? ")
+        
+        if decision_one == "A":
+            print("\nOh, how brave of you...")
+            stay_on_mars()
+            break
+        elif decision_one == "B":
+            print("\nEarth couldn't have gotten worse... could it?")
+            stay_on_earth()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def stay_on_earth():
@@ -63,10 +90,136 @@ def stay_on_earth():
     """
     gain_one_point()
 
-    print("_________________________")
-    print("How loyal of you to stay.")
+    print("So glad you chose Earth! Who knows WHAT's on Mars!")
     print("The world is due to end in exactly 5 years.")
     print("Who knows what you will encounter until then...")
+    print("_________________________")
+
+
+
+def stay_on_mars():
+    """
+    Function called when user decides to stay on Mars, 
+    will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+
+    print("Well then... here goes nothing!\n")
+    print("Rumour has it.. there is a safe, uninhabited part of Mars!")
+    print("The best chance you have is to find the secret passage there, and")
+    print("quickly, before the aliens catch you!")
+    print("_________________________")
+    print("The aliens are getting closer...")
+    print("You turn to run the opposite direction and trip over")
+    print("a bright, shiny gold box!\n")
+    print("Could this be a clue to the secret passage???")
+    print("This is tempting... What will you do?")
+
+    gold_box = input("A= Open box, or B= Keep moving? ")
+
+    while True:
+        if gold_box == "A":
+            print("\nOh no! It was a trap! The box exploded and you die.")
+            lose_one_point()
+            break
+        elif gold_box == "B":
+            print("\nWise choice, that would have been too easy!")
+            keep_moving()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def keep_moving():
+    """
+    Function called when user does not open gold box,
+    will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+    print("Let's get out of here!")
+    print("_________________________")
+    print("You encounter heavily armed aliens!")
+    print("They are coming at you from all angles!")
+    print("We have only 2 options here. Would you rather")
+    print("fight back and A= Choose a weapon, or B= Surrender")
+    print("and try to make friends?")
+    print("\nWhat will you do? Can you trust them?")
+
+    encounter_aliens = input("Please choose A or B: ")
+
+    while True:
+        if encounter_aliens == "A":
+            print("\nYou got this, let's go get 'em!!!")
+            weapon_choice()
+            break
+        elif encounter_aliens == "B":
+            print("\nIt was a trap! Humans can't be friends with Aliens.")
+            lose_one_point()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def weapon_choice():
+    """
+    Function called when user decides to choose a weapon against
+    aliens, will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+    print("Good choice! Who ever thought humans could be friends with aliens??")
+    print("_________________________")
+    print("Now we need to think this through. What would be the most valuable")
+    print("weapon against the aliens? They have gotten closer and you are")
+    print("running out of time. You must choose a weapon, and fast!\n")
+    print("The government has provided 2 options for those willing to fight.")
+    print("Which would be more useful..?")
+    print("A= a Lazer blaster, or B= a Cloak of invisibility?\n")
+
+    choose_weapon = input("Hurry! What do you choose? ")
+
+    while True:
+        if choose_weapon == "A":
+            print("\nUh oh... The aliens shut down all technology from Earth!")
+            lose_one_point()
+            break
+        elif choose_weapon == "B":
+            print("\nWhew! Close one! All technology has been shut down!")
+            invisible_cloak()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def invisible_cloak():
+    """
+    Function called when user chooses invisible cloak for a weapon,
+    will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+    print("You managed to get away with your cloak!")
+    print("_________________________")
+    print("Man... this thing is suffocating!!! It looks like we lost the")
+    print("aliens! We must keep moving to find the secret passage. Do we dare")
+    print("take off the cloak? There's no one around... what do you do?")
+
+    cloak_decision = input("A= Keep the cloak on, or B= Take the cloak off? ")
+
+    while True:
+        if cloak_decision == "A":
+            print("\nYou managed to make it to the secret passage!")
+            #end game -- win!
+            break
+        elif cloak_decision == "B":
+            print("\nThe aliens can see everything! They spotted you")
+            print("and now you are captured forever...")
+            lose_one_point()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def rules_of_game():
@@ -74,6 +227,7 @@ def rules_of_game():
     Lists the rules of the game and 
     allows user to start game if chosen
     """
+    print("_________________________")
     print("_________________________")
     print("\nRules:")
     print("\nYou will be taken through a text-based, option-driven game.")
@@ -94,6 +248,7 @@ def rules_of_game():
             break
         elif answer == "No":
             print("\nI guess you'll never know how it ends!")
+            print("Goodbye.")
             break
         else:
             print("_________________________")
