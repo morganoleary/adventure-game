@@ -18,29 +18,20 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 ### Flowchart for story line:
 ![Lucidchart Diagram](.devcontainer/assets/readme-images/game-flowchart.png)
 
-## Reminders
+## Features
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+- TBD
 
-## Creating the Heroku app
+## Bugs & Errors
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+- Commit #80f00d8 was meant to read as follows: "Add functions to story  when user chooses earth"
+    - I accidentally pushed the commit without realizing my error of stating "mars" again so I researched on how to change a previous commit message. 
+    - I used Slack and this [GitHub Doc](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message) to try to amend the issue with "git rebase -i HEAD~n". This became increasingly confusing.
+    - Tutor support was contacted and advised that -'Having an incorrect message is a much smaller problem than trying to change your commit.'- and everything should be working normally, but that Codeanywhere seemed to have a glitch as I wasn't able to save new updates and use the advised "git push --force" command. I was then told to create a new workspace and I was up and running again. 
+    - I was not able to rename the commit message and was advised to add a note to my README file.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Testing
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Deployment
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+## Credits
