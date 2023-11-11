@@ -31,21 +31,24 @@ def start_game():
     print("Do you choose A= Go to Mars, or B= Stay on Earth?")
 
     while True:
-        location_choice = input("\nWhere do you want to go? ")
+        try:
+            location_choice = input("\nWhere do you want to go? ")
 
-        if location_choice == "A":
-            print("__________")
-            print("You are going to Mars!")
-            go_to_mars()
-            break
-        elif location_choice == "B":
-            print("__________")
-            print("Earth it is!")
-            stay_on_earth()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+            if location_choice == "A":
+                print("__________")
+                print("You are going to Mars!")
+                go_to_mars()
+                break
+            elif location_choice == "B":
+                print("__________")
+                print("Earth it is!")
+                stay_on_earth()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def gain_one_point():
@@ -88,21 +91,24 @@ def go_to_mars():
     print("You have one chance to change your mind.")
     print("Do you A= Stay and wait to see what happens, or ")
     print("B= Sneak back on the space shuttle and go back to Earth?")
-    
+
     while True:
-        decision_one = input("What do you want to do? ")
-        
-        if decision_one == "A":
-            print("\nOh, how brave of you...")
-            stay_on_mars()
-            break
-        elif decision_one == "B":
-            print("\nEarth couldn't have gotten worse... could it?")
-            stay_on_earth()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            decision_one = input("What do you want to do? ")
+
+            if decision_one == "A":
+                print("\nOh, how brave of you...")
+                stay_on_mars()
+                break
+            elif decision_one == "B":
+                print("\nEarth couldn't have gotten worse... could it?")
+                stay_on_earth()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def stay_on_earth():
@@ -125,21 +131,24 @@ def stay_on_earth():
     print("Do you A= Move to the underground bunker or B= Try to survive")
     print("in the wild?")
 
-    survival_location = input("Which do you choose? A or B? ")
-
     while True:
-        if survival_location == "A":
-            print("\nIt was a trap! The bunker explodes.")
-            lose_one_point()
-            break
-        elif survival_location == "B":
-            print("\nThe whole bunker just exploded!")
-            print("Whew! Good thing you chose to stay in the wild!")
-            stay_in_wild()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            survival_location = input("Which do you choose? A or B? ")
+
+            if survival_location == "A":
+                print("\nIt was a trap! The bunker explodes.")
+                lose_one_point()
+                break
+            elif survival_location == "B":
+                print("\nThe whole bunker just exploded!")
+                print("Whew! Good thing you chose to stay in the wild!")
+                stay_in_wild()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def stay_in_wild():
@@ -158,21 +167,24 @@ def stay_in_wild():
     print("\nA= Let them attack and become a zombie, or B= Choose a")
     print("weapon and fight! Better choose quickly!")
 
-    zombie_choice = input("A or B? ")
-
     while True:
-        if zombie_choice == "A":
-            print("\nAll zombies have been wiped out by the A-Team!")
-            lose_one_point()
-            break
-        elif zombie_choice == "B":
-            print("\nThe zombies were wiped out! But now there are more")
-            print("coming... Time to choose your weapon.")
-            zombie_weapon_choice()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            zombie_choice = input("A or B? ")
+
+            if zombie_choice == "A":
+                print("\nAll zombies have been wiped out by the A-Team!")
+                lose_one_point()
+                break
+            elif zombie_choice == "B":
+                print("\nThe zombies were wiped out! But now there are more")
+                print("coming... Time to choose your weapon.")
+                zombie_weapon_choice()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def zombie_weapon_choice():
@@ -190,22 +202,26 @@ def zombie_weapon_choice():
     print("be yours! Do you want A= the Cloak of invisibility, or B= the ")
     print("entire truck filled with guns?")
 
-    truck_or_cloak = input("Which do you choose? A or B? ")
 
     while True:
-        if truck_or_cloak == "A":
-            print("\nGood choice! The government just seized all ammunition!")
-            print("The truck would have been no use.")
-            cloak_weapon()
-            break
-        elif truck_or_cloak == "B":
-            print("\nAll ammunition was seized by the government and you are")
-            print("left with nothing. Zombies attack and you die.")
-            lose_one_point()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            truck_or_cloak = input("Which do you choose? A or B? ")
+
+            if truck_or_cloak == "A":
+                print("\nGood choice! The government just seized all ammunition!")
+                print("The truck would have been no use.")
+                cloak_weapon()
+                break
+            elif truck_or_cloak == "B":
+                print("\nAll ammunition was seized by the government and you are")
+                print("left with nothing. Zombies attack and you die.")
+                lose_one_point()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def cloak_weapon():
@@ -226,22 +242,25 @@ def cloak_weapon():
     print("cloak is just so suffocating!")
     print("_________________________")
     print("Do you A= Keep the cloak on, or B= Take the cloak off?")
-    
-    final_earth_decision = input("Which do you choose? A or B? ")
-    
+
     while True:
-        if final_earth_decision == "A":
-            print("\nYou managed to make it to the capital building alive!")
-            #end game -- win!
-            break
-        elif final_earth_decision == "B":
-            print("\nTurns out you weren't completely alone...")
-            print("A group of zombies spot and kill you.")
-            lose_one_point()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            final_earth_decision = input("Which do you choose? A or B? ")
+
+            if final_earth_decision == "A":
+                print("\nYou managed to make it to the capital building alive!")
+                #end game -- win!
+                break
+            elif final_earth_decision == "B":
+                print("\nTurns out you weren't completely alone...")
+                print("A group of zombies spot and kill you.")
+                lose_one_point()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def stay_on_mars():
@@ -263,20 +282,23 @@ def stay_on_mars():
     print("Could this be a clue to the secret passage???")
     print("This is tempting... What will you do?")
 
-    gold_box = input("A= Open box, or B= Keep moving? ")
-
     while True:
-        if gold_box == "A":
-            print("\nOh no! It was a trap! The box exploded and you die.")
-            lose_one_point()
-            break
-        elif gold_box == "B":
-            print("\nWise choice, that would have been too easy!")
-            keep_moving()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            gold_box = input("A= Open box, or B= Keep moving? ")
+
+            if gold_box == "A":
+                print("\nOh no! It was a trap! The box exploded and you die.")
+                lose_one_point()
+                break
+            elif gold_box == "B":
+                print("\nWise choice, that would have been too easy!")
+                keep_moving()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def keep_moving():
@@ -296,20 +318,23 @@ def keep_moving():
     print("and try to make friends?")
     print("\nWhat will you do? Can you trust them?")
 
-    encounter_aliens = input("Please choose A or B: ")
-
     while True:
-        if encounter_aliens == "A":
-            print("\nYou got this, let's go get 'em!!!")
-            weapon_choice()
-            break
-        elif encounter_aliens == "B":
-            print("\nIt was a trap! Humans can't be friends with Aliens.")
-            lose_one_point()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            encounter_aliens = input("Please choose A or B: ")
+
+            if encounter_aliens == "A":
+                print("\nYou got this, let's go get 'em!!!")
+                weapon_choice()
+                break
+            elif encounter_aliens == "B":
+                print("\nIt was a trap! Humans can't be friends with Aliens.")
+                lose_one_point()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def weapon_choice():
@@ -329,20 +354,23 @@ def weapon_choice():
     print("Which would be more useful..?")
     print("A= a Lazer blaster, or B= a Cloak of invisibility?\n")
 
-    choose_weapon = input("Hurry! What do you choose? ")
-
     while True:
-        if choose_weapon == "A":
-            print("\nUh oh... The aliens shut down all technology from Earth!")
-            lose_one_point()
-            break
-        elif choose_weapon == "B":
-            print("\nWhew! Close one! All technology has been shut down!")
-            invisible_cloak()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            choose_weapon = input("Hurry! What do you choose? ")
+
+            if choose_weapon == "A":
+                print("\nUh oh... The aliens shut down all technology from Earth!")
+                lose_one_point()
+                break
+            elif choose_weapon == "B":
+                print("\nWhew! Close one! All technology has been shut down!")
+                invisible_cloak()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def invisible_cloak():
@@ -359,21 +387,24 @@ def invisible_cloak():
     print("aliens! We must keep moving to find the secret passage. Do we dare")
     print("take off the cloak? There's no one around... what do you do?")
 
-    cloak_decision = input("A= Keep the cloak on, or B= Take the cloak off? ")
-
     while True:
-        if cloak_decision == "A":
-            print("\nYou managed to make it to the secret passage!")
-            #end game -- win!
-            break
-        elif cloak_decision == "B":
-            print("\nThe aliens can see everything! They spotted you")
-            print("and now you are captured forever...")
-            lose_one_point()
-            break
-        else:
-            print("_________________________")
-            print("Invalid.\nPlease choose either A or B.")
+        try:
+            cloak_decision = input("A= Keep the cloak on, or B= Take the cloak off? ")
+
+            if cloak_decision == "A":
+                print("\nYou managed to make it to the secret passage!")
+                #end game -- win!
+                break
+            elif cloak_decision == "B":
+                print("\nThe aliens can see everything! They spotted you")
+                print("and now you are captured forever...")
+                lose_one_point()
+                break
+            else:
+                print("_________________________")
+                print("Invalid.\nPlease choose either capital A or B.")
+        except ValueError:
+            print("Invalid.\nPlease choose either capital A or B.")
 
 
 def rules_of_game():
@@ -411,13 +442,17 @@ def rules_of_game():
 
 print("Welcome to the adventure!")
 print("It's almost the end of the world.\n")
-print("Please choose what you would like to do:")
+print("_________________________")
+username = input("Who is playing? ")
+
+print("_________________________")
+print(f"Here we go, {username}! Please choose what you would like to do:\n")
 print("A - See rules of game")
 print("B - Start game")
 print("C - See scoreboard")
 
 while True:
-    option = input("Please choose A, B, or C: ")
+    option = input("\nPlease choose A, B, or C: ")
 
     if option == "A":
         rules_of_game()
@@ -433,3 +468,4 @@ while True:
     else:
         print("_________________________")
         print("Sorry, invalid input.")
+        

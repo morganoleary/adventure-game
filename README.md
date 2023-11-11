@@ -29,6 +29,8 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
     - I used Slack and this [GitHub Doc](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message) to try to amend the issue with "git rebase -i HEAD~n". This became increasingly confusing.
     - Tutor support was contacted and advised that -'Having an incorrect message is a much smaller problem than trying to change your commit.'- and everything should be working normally, but that Codeanywhere seemed to have a glitch as I wasn't able to save new updates and use the advised "git push --force" command. I was then told to create a new workspace and I was up and running again. 
     - I was not able to rename the commit message and was advised to add a note to my README file.
+- While creating the exceptions throughout the story, depending on user input, I began using if/elif/else statements inside while True: loops. This was causing the 'else' statement to print indefinitely as the while loop did not have an end point.
+    - I implemented try and except statements within my while loops so that the loop could be exited.
 
 ## Testing
 
@@ -36,4 +38,9 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 
 ## Credits
 
-- The Love Sandwiches walkthrough videos were used to import gspread and google.auth dependencies in order to access the Google Sheet API. The SCOPE was also used from Love Sandwiches.
+- The Love Sandwiches walkthrough "Getting Set Up" videos were used to import gspread and google.auth dependencies in order to access the Google Sheet API. The SCOPE was also used from Love Sandwiches.
+- The overal concept of how to start an adventure game came from watching [this text-based adventure game YouTube video tutorial](https://www.youtube.com/watch?v=ORsJn-71__0)
+- When implementing exception handling, the following resources were used for understanding:
+    - [Exception & Error Handling in Python](https://www.datacamp.com/tutorial/exception-handling-python)
+    - [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#Exception)
+- Python styling guidance was from [How to Write Beautiful Python Code With PEP 8](https://realpython.com/python-pep8/)
