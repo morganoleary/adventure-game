@@ -35,3 +35,5 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 ## Deployment
 
 ## Credits
+
+- The Love Sandwiches walkthrough videos were used to import gspread and google.auth dependencies in order to access the Google Sheet API. The SCOPE was also used from Love Sandwiches.
