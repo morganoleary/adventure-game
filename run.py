@@ -56,10 +56,12 @@ def go_to_mars():
     """
     gain_one_point()
 
-    print("Now, the thing about Mars is...")
+    print("_________________________")
+    print("\nNow, the thing about Mars is...")
     print("No one knew there were already aliens living there!")
     print("\n... The next day you are packed onto a space shuttle")
     print("and become one of the first people to land on Mars.")
+    print("_________________________")
     print("\nThe air is cold and damp and it's so dark you can barely")
     print("make out shadows in the distance. There are strange, long")
     print("creatures coming towards you at an alarming speed!\n")
@@ -90,11 +92,136 @@ def stay_on_earth():
     """
     gain_one_point()
 
-    print("So glad you chose Earth! Who knows WHAT's on Mars!")
+    print("_________________________")
+    print("\nSo glad you chose Earth! Who knows WHAT's on Mars!")
     print("The world is due to end in exactly 5 years.")
     print("Who knows what you will encounter until then...")
     print("_________________________")
+    print("Things have taken a turn for the worse and natural disasters")
+    print("are hitting every continent at once!")
+    print("Will you be able to survive Earth's final years if it's THIS bad?")
+    print("\nThere is an underground bunker that was created to offer more")
+    print("peace for the final days...")
+    print("Do you A= Move to the underground bunker or B= Try to survive")
+    print("in the wild?")
 
+    survival_location = input("Which do you choose? A or B? ")
+
+    while True:
+        if survival_location == "A":
+            print("\nIt was a trap! The bunker explodes.")
+            lose_one_point()
+            break
+        elif survival_location == "B":
+            print("\nThe whole bunker just exploded!")
+            print("Whew! Good thing you chose to stay in the wild!")
+            stay_in_wild()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def stay_in_wild():
+    """
+    Function called when user decides to stay in the wild,
+    will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+
+    print("_________________________")
+    print("\nThe government has seized all properties still standing and")
+    print("you are thrown into the streets, literally into the wild!")
+    print("_________________________")
+    print("Uh oh, a virus has spread and everyone is turning into zombies!")
+    print("They are coming from all angles! You have two choices...")
+    print("\nA= Let them attack and become a zombie, or B= Choose a")
+    print("weapon and fight! Better choose quickly!")
+
+    zombie_choice = input("A or B? ")
+
+    while True:
+        if zombie_choice == "A":
+            print("\nAll zombies have been wiped out by the A-Team!")
+            lose_one_point()
+            break
+        elif zombie_choice == "B":
+            print("\nThe zombies were wiped out! But now there are more")
+            print("coming... Time to choose your weapon.")
+            zombie_weapon_choice()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def zombie_weapon_choice():
+    """
+    Function called when user chooses a weapon against the zombies,
+    will gain 1 point towards scoreboard.
+    """
+    print("_________________________")
+    print("\nZombies are close and you are unarmed!")
+    print("You manage to make it to the nearest weapons.")
+    print("_________________________")
+    print("Upon entering the large warehouse built for just this scenario,")
+    print("you see magical cloaks to your left, cloaks of invisibility.")
+    print("To your right is a huge truck FULL of guns! The whole truck could")
+    print("be yours! Do you want A= the Cloak of invisibility, or B= the ")
+    print("entire truck filled with guns?")
+
+    truck_or_cloak = input("Which do you choose? A or B? ")
+
+    while True:
+        if truck_or_cloak == "A":
+            print("\nGood choice! The government just seized all ammunition!")
+            print("The truck would have been no use.")
+            cloak_weapon()
+            break
+        elif truck_or_cloak == "B":
+            print("\nAll ammunition was seized by the government and you are")
+            print("left with nothing. Zombies attack and you die.")
+            lose_one_point()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
+
+
+def cloak_weapon():
+    """
+    Function called when user chooses the cloak against the zombies,
+    will gain 1 point towards scoreboard.
+    """
+    gain_one_point()
+
+    print("_________________________")
+    print("\nYou managed to get away from the hoards of zombies, thanks to being")
+    print("invisible! As you take in your surroundings, from the safety of")
+    print("your cloak, you see buildings on fire, sinkholes swallowing up cars,")
+    print("people and everything in site. As you were searching through that")
+    print("warehouse, you overheard others talking about seeking refuge at ")
+    print("the capital building... You have to try to make it there, as it")
+    print("may be your last chance for survival. The only problem is, this")
+    print("cloak is just so suffocating!")
+    print("_________________________")
+    print("Do you A= Keep the cloak on, or B= Take the cloak off?")
+    
+    final_earth_decision = input("Which do you choose? A or B? ")
+    
+    while True:
+        if final_earth_decision == "A":
+            print("\nYou managed to make it to the capital building alive!")
+            #end game -- win!
+            break
+        elif final_earth_decision == "B":
+            print("\nTurns out you weren't completely alone...")
+            print("A group of zombies spot and kill you.")
+            lose_one_point()
+            break
+        else:
+            print("_________________________")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def stay_on_mars():
@@ -104,7 +231,8 @@ def stay_on_mars():
     """
     gain_one_point()
 
-    print("Well then... here goes nothing!\n")
+    print("_________________________")
+    print("\nWell then... here goes nothing!\n")
     print("Rumour has it.. there is a safe, uninhabited part of Mars!")
     print("The best chance you have is to find the secret passage there, and")
     print("quickly, before the aliens catch you!")
@@ -137,7 +265,9 @@ def keep_moving():
     will gain 1 point towards scoreboard.
     """
     gain_one_point()
-    print("Let's get out of here!")
+
+    print("_________________________")
+    print("\nLet's get out of here!")
     print("_________________________")
     print("You encounter heavily armed aliens!")
     print("They are coming at you from all angles!")
@@ -168,7 +298,9 @@ def weapon_choice():
     aliens, will gain 1 point towards scoreboard.
     """
     gain_one_point()
-    print("Good choice! Who ever thought humans could be friends with aliens??")
+
+    print("_________________________")
+    print("\nGood choice! Who ever thought humans could be friends with aliens??")
     print("_________________________")
     print("Now we need to think this through. What would be the most valuable")
     print("weapon against the aliens? They have gotten closer and you are")
@@ -199,7 +331,9 @@ def invisible_cloak():
     will gain 1 point towards scoreboard.
     """
     gain_one_point()
-    print("You managed to get away with your cloak!")
+
+    print("_________________________")
+    print("\nYou managed to get away with your cloak!")
     print("_________________________")
     print("Man... this thing is suffocating!!! It looks like we lost the")
     print("aliens! We must keep moving to find the secret passage. Do we dare")
