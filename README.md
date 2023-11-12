@@ -10,8 +10,6 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 - As a player, I want to have a story-driven experience that will take me to new places depending on my choices throughout the game.
 - As a player, I want clear descriptions of surroundings and other characters to better immerse myself into the adventure.
 - As a player, I want the game to have multiple possible outcomes based on my choices throughout the adventure.
-- As a player, I want to be able to pause the game and save my progress to come back to later. 
-- As a player, I want to be able to pick up my previous game and begin from the paused point.
 - As a player, I want a clear way to be able to exit the game and restart the adventure.
 - As a player, I want to be able to see my score tally, depending on my choices, and how far in the game I made it compared to other players.
 

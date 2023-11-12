@@ -4,8 +4,8 @@ choices to see how far they can get in the game!
 """
 import gspread
 from google.oauth2.service_account import Credentials
-
 import time
+import os
 
 GOOGLE_SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,6 +23,10 @@ scores = SHEET.worksheet('scoreboard')
 data = scores.get_all_values()
 
 
+def clear():
+    os.system("clear")
+
+
 def print_by_letter(output_str):
     """
     Function to read the text to the user and simplify user experience
@@ -37,6 +41,7 @@ def start_game(username):
     Begins the adventure game
     User must choose an option
     """
+    clear()
     output_str = '''
     Welcome to the end of the world as we know it.
     You have the option to either go to Mars and start a new world,
@@ -51,13 +56,13 @@ def start_game(username):
             location_choice = input("\nWhere do you want to go? ")
 
             if location_choice == "A":
-                print("__________")
-                print_by_letter("\nYou are going to Mars!")
+                print("\n__________")
+                print_by_letter("\nYou are going to Mars!\n")
                 go_to_mars(username)
                 break
             elif location_choice == "B":
                 print("__________")
-                print_by_letter("\nEarth it is!")
+                print_by_letter("\nEarth it is!\n")
                 stay_on_earth(username)
                 break
             else:
@@ -77,10 +82,11 @@ def gain_one_point(username):
     and update leaderboard
     """
     score = 0
+    print("\n_________________________")
+    print("\n*** You managed to stay alive. Earn one point. ***\n")
     print("_________________________")
-    print("\n*** You managed to stay alive. Earn one point. ***")
-    print("_________________________")
-    print_by_letter(f"{username}, your score is now {score}.")
+    print_by_letter(f"\n{username}, your score is now {score}.\n")
+    print("_________________________\n")
 
 
 def lose_one_point(username):
@@ -89,11 +95,12 @@ def lose_one_point(username):
     and update leaderboard. Game is over.
     """
     score = 0
+    print("\n_________________________")
+    print("\n*** You didn't make it... Lose one point. ***\n")
     print("_________________________")
-    print("\n*** You didn't make it... Lose one point. ***")
-    print("_________________________")
-    print("Sorry, game over.")
-    print_by_letter(f"{username}, your score is now {score}.")
+    print("\nSorry, game over.")
+    print_by_letter(f"\n{username}, your score is now {score}.\n")
+    print("_________________________\n")
 
 
 def go_to_mars(username):
@@ -101,6 +108,7 @@ def go_to_mars(username):
     Users first option and since still alive,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -112,8 +120,10 @@ def go_to_mars(username):
 
     The air is cold and damp and it's so dark you can barely
     make out shadows in the distance. There are strange, long
-    creatures coming towards you at an alarming speed!\n
+    creatures coming towards you at an alarming speed!
+
     You have one chance to change your mind.
+
     Do you...
     A= Stay and wait to see what happens, or
     B= Sneak back on the space shuttle and go back to Earth?
@@ -144,6 +154,7 @@ def stay_on_earth(username):
     Users first option and since still alive,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -188,6 +199,7 @@ def stay_in_wild(username):
     Function called when user decides to stay in the wild,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -230,6 +242,7 @@ def zombie_weapon_choice(username):
     Function called when user chooses a weapon against the zombies,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -276,6 +289,7 @@ def cloak_weapon(username):
     Function called when user chooses the cloak against the zombies,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -321,6 +335,7 @@ def stay_on_mars(username):
     Function called when user decides to stay on Mars,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -364,6 +379,7 @@ def keep_moving(username):
     Function called when user does not open gold box,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -406,6 +422,7 @@ def weapon_choice(username):
     Function called when user decides to choose a weapon against
     aliens, will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -450,6 +467,7 @@ def invisible_cloak(username):
     Function called when user chooses invisible cloak for a weapon,
     will gain 1 point towards scoreboard.
     """
+    clear()
     gain_one_point(username)
 
     output_str = '''
@@ -490,6 +508,7 @@ def rules_of_game(username):
     Lists the rules of the game and
     allows user to start game if chosen
     """
+    clear()
     output_str = '''
     Rules:
 
@@ -498,9 +517,6 @@ def rules_of_game(username):
 
     Each chosen response will accumulate a certain number of points.
     These points will be added to the leaderboard!
-
-    If at any stage you wish to pause and save your progress,
-    please type 'PAUSE' into the terminal.
 
     If at any stage you wish to end your adventure and restart the
     game, please type 'EXIT' into the terminal.
@@ -521,7 +537,7 @@ def rules_of_game(username):
             break
         else:
             print("_________________________")
-            print_by_letter("Please enter...")
+            print_by_letter("\nPlease enter...")
 
 
 def adventure_welcome():
@@ -534,7 +550,7 @@ def adventure_welcome():
     username = input("\nWho is playing? ")
 
     print("_________________________")
-    print_by_letter(f"Here we go, {username}!\n")
+    print_by_letter(f"\nHere we go, {username}!\n")
     print_by_letter("Please choose what you would like to do:\n")
     print("\nA - See rules of game")
     print("B - Start game")
