@@ -32,6 +32,9 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 - While creating the exceptions throughout the story, depending on user input, I began using if/elif/else statements inside while True: loops. This was causing the 'else' statement to print indefinitely as the while loop did not have an end point.
     - I implemented try and except statements within my while loops so that the loop could be exited.
 
+### Notes:
+- While committing changes, I had multiple instances where CodeAnywhere was down and I was unable to push commits, which resulted in fewer commits.
+
 ## Testing
 
 ## Deployment

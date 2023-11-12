@@ -1,9 +1,11 @@
 """
-This is a fun adventure game that will take the user through a series of 
+This is a fun adventure game that will take the user through a series of
 choices to see how far they can get in the game!
 """
 import gspread
 from google.oauth2.service_account import Credentials
+
+import time
 
 GOOGLE_SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -20,7 +22,15 @@ scores = SHEET.worksheet('scoreboard')
 
 data = scores.get_all_values()
 
-#print(data) ***confirmed spreadsheet is linked***
+
+def print_by_letter(output_str):
+    """
+    Function to read the text to the user and simplify user experience
+    """
+    for char in output_str:
+        print(char, end='', flush=True)
+        time.sleep(.03)
+
 
 def start_game(username):
     """
@@ -34,7 +44,7 @@ def start_game(username):
 
     Do you choose A= Go to Mars, or B= Stay on Earth?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
@@ -42,12 +52,12 @@ def start_game(username):
 
             if location_choice == "A":
                 print("__________")
-                print("You are going to Mars!")
+                print_by_letter("\nYou are going to Mars!")
                 go_to_mars(username)
                 break
             elif location_choice == "B":
                 print("__________")
-                print("Earth it is!")
+                print_by_letter("\nEarth it is!")
                 stay_on_earth(username)
                 break
             else:
@@ -57,6 +67,10 @@ def start_game(username):
             print("Invalid.\nPlease choose either capital A or B.")
 
 
+def end_game():
+    print("You made it to the end! Game over.")
+
+
 def gain_one_point(username):
     """
     Function to add one point to score
@@ -64,9 +78,9 @@ def gain_one_point(username):
     """
     score = 0
     print("_________________________")
-    print("*** You managed to stay alive. Earn one point. ***")
+    print("\n*** You managed to stay alive. Earn one point. ***")
     print("_________________________")
-    print(f"{username}, your score is now {score}.")
+    print_by_letter(f"{username}, your score is now {score}.")
 
 
 def lose_one_point(username):
@@ -76,10 +90,10 @@ def lose_one_point(username):
     """
     score = 0
     print("_________________________")
-    print("*** You didn't make it... Lose one point. ***")
+    print("\n*** You didn't make it... Lose one point. ***")
     print("_________________________")
     print("Sorry, game over.")
-    print(f"{username}, your score is now {score}.")
+    print_by_letter(f"{username}, your score is now {score}.")
 
 
 def go_to_mars(username):
@@ -100,22 +114,22 @@ def go_to_mars(username):
     make out shadows in the distance. There are strange, long
     creatures coming towards you at an alarming speed!\n
     You have one chance to change your mind.
-    Do you... 
+    Do you...
     A= Stay and wait to see what happens, or
     B= Sneak back on the space shuttle and go back to Earth?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             decision_one = input("What do you want to do? ")
 
             if decision_one == "A":
-                print("\nOh, how brave of you...")
+                print_by_letter("\nOh, how brave of you...")
                 stay_on_mars(username)
                 break
             elif decision_one == "B":
-                print("\nEarth couldn't have gotten worse... could it?")
+                print_by_letter("\nEarth couldn't have gotten worse...")
                 stay_on_earth(username)
                 break
             else:
@@ -147,19 +161,19 @@ def stay_on_earth(username):
     A= Move to the underground bunker, or
     B= Try to survive in the wild?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             survival_location = input("Which do you choose? A or B? ")
 
             if survival_location == "A":
-                print("\nIt was a trap! The bunker explodes.")
+                print_by_letter("\nIt was a trap! The bunker explodes.")
                 lose_one_point(username)
                 break
             elif survival_location == "B":
-                print("\nThe whole bunker just exploded!")
-                print("Whew! Good thing you chose to stay in the wild!")
+                print_by_letter("\nThe whole bunker just exploded!\nWhew! ")
+                print_by_letter("Good thing you chose to stay in the wild!")
                 stay_in_wild(username)
                 break
             else:
@@ -181,27 +195,27 @@ def stay_in_wild(username):
     you are thrown into the streets, literally into the wild!
 
     Uh oh, a virus has spread and everyone is turning into zombies!
-    They are coming from all angles! 
-    
+    They are coming from all angles!
+
     You have two choices...
     A= Let them attack and become a zombie, or
-    B= Choose a weapon and fight! 
-    
+    B= Choose a weapon and fight!
+
     Better choose quickly!
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             zombie_choice = input("A or B? ")
 
             if zombie_choice == "A":
-                print("\nAll zombies have been wiped out by the A-Team!")
+                print_by_letter("\nAll zombies were wiped out by the A-team!")
                 lose_one_point(username)
                 break
             elif zombie_choice == "B":
-                print("\nThe zombies were wiped out! But now there are more")
-                print("coming... Time to choose your weapon.")
+                print_by_letter("\nThe zombies were wiped out but more await.")
+                print_by_letter("coming... Time to choose your weapon.")
                 zombie_weapon_choice(username)
                 break
             else:
@@ -226,26 +240,28 @@ def zombie_weapon_choice(username):
     you see magical cloaks to your left.. cloaks of invisibility.
 
     To your right is a huge truck FULL of guns! The whole truck could
-    be yours! 
-    
+    be yours!
+
     Do you want...
     A= the Cloak of invisibility, or
     B= the entire truck filled with guns?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             truck_or_cloak = input("Which do you choose? A or B? ")
 
             if truck_or_cloak == "A":
-                print("\nGood choice! The government just seized all ammunition!")
-                print("The truck would have been no use.")
+                print_by_letter("\nGood choice!")
+                print_by_letter("The government just seized all ammunition!")
+                print_by_letter("The truck would have been no use.")
                 cloak_weapon(username)
                 break
             elif truck_or_cloak == "B":
-                print("\nAll ammunition was seized by the government and you are")
-                print("left with nothing. Zombies attack and you die.")
+                print_by_letter("\nAll ammunition is seized by the government")
+                print_by_letter("You are left with nothing.")
+                print_by_letter("Zombies attack and you die.")
                 lose_one_point(username)
                 break
             else:
@@ -267,30 +283,30 @@ def cloak_weapon(username):
     invisible! As you take in your surroundings, from the safety of
     your cloak, you see buildings on fire, sinkholes swallowing up cars,
     people and everything in site.
-    
+
     As you were searching through that warehouse, you overheard others talking
-    about seeking refuge at the capital building... 
-    
-    You have to try to make it there, as it may be your last chance for survival. 
+    about seeking refuge at the capital building...
+
+    You have to try to make it there. It may be your last chance for survival.
     The only problem is, this cloak is just so suffocating!
 
     Do you...
     A= Keep the cloak on, or
     B= Take the cloak off?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             final_earth_decision = input("Which do you choose? A or B? ")
 
             if final_earth_decision == "A":
-                print("\nYou managed to make it to the capital building alive!")
-                #end game -- win!
+                print_by_letter("\nYou made it to the capital alive!")
+                end_game()
                 break
             elif final_earth_decision == "B":
-                print("\nTurns out you weren't completely alone...")
-                print("A group of zombies spot and kill you.")
+                print_by_letter("\nTurns out you weren't completely alone...")
+                print_by_letter("A group of zombies spot and kill you.")
                 lose_one_point(username)
                 break
             else:
@@ -302,7 +318,7 @@ def cloak_weapon(username):
 
 def stay_on_mars(username):
     """
-    Function called when user decides to stay on Mars, 
+    Function called when user decides to stay on Mars,
     will gain 1 point towards scoreboard.
     """
     gain_one_point(username)
@@ -315,23 +331,25 @@ def stay_on_mars(username):
     before the aliens catch you!
 
     The aliens are getting closer...
-    You turn to run the opposite direction and trip over a bright, shiny gold box!
+    You turn to run and trip over a bright, shiny gold box!
     Could this be a clue to the secret passage???
     This is tempting... What will you do?
 
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             gold_box = input("A= Open box, or B= Keep moving? ")
 
             if gold_box == "A":
-                print("\nOh no! It was a trap! The box exploded and you die.")
+                print_by_letter("\nOh no! It was a trap!")
+                print_by_letter("The box exploded and you die.")
                 lose_one_point(username)
                 break
             elif gold_box == "B":
-                print("\nWise choice, that would have been too easy!")
+                print_by_letter("\nWise choice.")
+                print_by_letter("That would have been too easy!")
                 keep_moving(username)
                 break
             else:
@@ -354,25 +372,26 @@ def keep_moving(username):
     You encounter heavily armed aliens!
     They are coming at you from all angles!
 
-    We have only 2 options here. 
+    We have only 2 options here.
     Would you ratherfight back and...
     A= Choose a weapon, or
     B= Surrender and try to make friends?
 
     What will you do? Can you trust them?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             encounter_aliens = input("Please choose A or B: ")
 
             if encounter_aliens == "A":
-                print("\nYou got this, let's go get 'em!!!")
+                print_by_letter("\nYou got this, let's go get 'em!!!")
                 weapon_choice(username)
                 break
             elif encounter_aliens == "B":
-                print("\nIt was a trap! Humans can't be friends with Aliens.")
+                print_by_letter("\nIt was a trap!")
+                print_by_letter("Humans can't be friends with Aliens.")
                 lose_one_point(username)
                 break
             else:
@@ -395,7 +414,7 @@ def weapon_choice(username):
     Now we need to think this through...
     What would be the most valuable weapon against the aliens?
 
-    They have gotten closer and you are running out of time. 
+    They have gotten closer and you are running out of time.
     You must choose a weapon, and fast!
     The government has provided 2 options for those willing to fight.
 
@@ -403,18 +422,20 @@ def weapon_choice(username):
     A= a Lazer blaster, or
     B= a Cloak of invisibility?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
             choose_weapon = input("Hurry! What do you choose? ")
 
             if choose_weapon == "A":
-                print("\nUh oh... The aliens shut down all technology from Earth!")
+                print_by_letter("\nUh oh...")
+                print_by_letter("The aliens shut down all Earthly technology!")
                 lose_one_point(username)
                 break
             elif choose_weapon == "B":
-                print("\nWhew! Close one! All technology has been shut down!")
+                print_by_letter("\nWhew! Close one!")
+                print_by_letter("All technology has been shut down!")
                 invisible_cloak(username)
                 break
             else:
@@ -434,26 +455,27 @@ def invisible_cloak(username):
     output_str = '''
     You managed to get away with your cloak!
 
-    Man... this thing is suffocating!!! 
+    Man... this thing is suffocating!!!
     It looks like we lost the aliens!
     We must keep moving to find the secret passage.
-    
-    Do we dare take off the cloak? 
+
+    Do we dare take off the cloak?
     There's no one around... what do you do?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         try:
-            cloak_decision = input("A= Keep the cloak on, or B= Take the cloak off? ")
+            cloak_decision = input("A= Keep cloak on, or B= Take cloak off? ")
 
             if cloak_decision == "A":
-                print("\nYou managed to make it to the secret passage!")
-                #end game -- win!
+                print_by_letter("\nYou made it to the secret passage!")
+                end_game()
                 break
             elif cloak_decision == "B":
-                print("\nThe aliens can see everything! They spotted you")
-                print("and now you are captured forever...")
+                print_by_letter("\nThe aliens can see everything!")
+                print_by_letter("They spotted you.")
+                print_by_letter("You are now captured forever...")
                 lose_one_point(username)
                 break
             else:
@@ -465,7 +487,7 @@ def invisible_cloak(username):
 
 def rules_of_game(username):
     """
-    Lists the rules of the game and 
+    Lists the rules of the game and
     allows user to start game if chosen
     """
     output_str = '''
@@ -482,10 +504,10 @@ def rules_of_game(username):
 
     If at any stage you wish to end your adventure and restart the
     game, please type 'EXIT' into the terminal.
-    
+
     Now...  do you dare play the game?
     '''
-    print(output_str)
+    print_by_letter(output_str)
 
     while True:
         answer = input("Yes or No? ")
@@ -494,25 +516,27 @@ def rules_of_game(username):
             start_game(username)
             break
         elif answer == "No":
-            print("\nI guess you'll never know how it ends!")
-            print("Goodbye.")
+            print_by_letter("\nI guess you'll never know how it ends!")
+            print_by_letter("Goodbye.")
             break
         else:
             print("_________________________")
-            print("Please enter...")
+            print_by_letter("Please enter...")
+
 
 def adventure_welcome():
     """
-    This function is called when the program is run and 
+    This function is called when the program is run and
     displays the welcome message with initial options.
     """
-    print("\n\tWelcome to the adventure!")
-    print("\n\tIt's almost the end of the world...\n")
-    username = input("Who is playing? ")
+    print_by_letter("\n\tWelcome to the adventure!")
+    print_by_letter("\n\tIt's almost the end of the world...\n")
+    username = input("\nWho is playing? ")
 
     print("_________________________")
-    print(f"Here we go, {username}! Please choose what you would like to do:\n")
-    print("A - See rules of game")
+    print_by_letter(f"Here we go, {username}!\n")
+    print_by_letter("Please choose what you would like to do:\n")
+    print("\nA - See rules of game")
     print("B - Start game")
     print("C - See scoreboard")
 
@@ -523,11 +547,11 @@ def adventure_welcome():
             rules_of_game(username)
             break
         elif option == "B":
-            print("Starting game...")
+            print_by_letter("Starting game...")
             start_game(username)
             break
         elif option == "C":
-            print("Hang tight while we tally up the scoreboard...")
+            print_by_letter("Hang tight while we tally up the scoreboard...")
             print("Scoreboard (from google spreadsheet)")
             break
         else:
