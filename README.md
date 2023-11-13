@@ -11,14 +11,20 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 - As a player, I want clear descriptions of surroundings and other characters to better immerse myself into the adventure.
 - As a player, I want the game to have multiple possible outcomes based on my choices throughout the adventure.
 - As a player, I want a clear way to be able to exit the game and restart the adventure.
-- As a player, I want to be able to see my score tally, depending on my choices, and how far in the game I made it compared to other players.
+- As a player, I want to be able to see my score tally, depending on my choices, and how many points I made compared to other players.
 
 ### Flowchart for story line:
 ![Lucidchart Diagram](.devcontainer/assets/readme-images/game-flowchart.png)
 
 ## Features
 
-- TBD
+- Welcome message with menu to learn about the game
+- Rules can be accessed from this menu to allow the user to choose their first move
+- A scoreboard spreadsheet has been implemented to keep track of the users score
+- User is given clear exceptions when input is invalid and offers a resubmission of input
+- The story output is delayed so that the text is typed out and offers better user experience and readability
+- The terminal is cleared after each move to all for better user experience and clear readability
+- **User is able to type "exit" to restart the game at any chosen point**
 
 ## Bugs & Errors
 
@@ -45,3 +51,4 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
     - [Exception & Error Handling in Python](https://www.datacamp.com/tutorial/exception-handling-python)
     - [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#Exception)
 - Python styling guidance was from [How to Write Beautiful Python Code With PEP 8](https://realpython.com/python-pep8/)
+- [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/) was referenced to create function to clear terminal.

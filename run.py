@@ -53,7 +53,7 @@ def start_game(username):
 
     while True:
         try:
-            location_choice = input("\nWhere do you want to go? ")
+            location_choice = input("\nWhere do you want to go? \n")
 
             if location_choice == "A":
                 print("\n__________")
@@ -132,7 +132,7 @@ def go_to_mars(username):
 
     while True:
         try:
-            decision_one = input("What do you want to do? ")
+            decision_one = input("What do you want to do? \n")
 
             if decision_one == "A":
                 print_by_letter("\nOh, how brave of you...")
@@ -176,7 +176,7 @@ def stay_on_earth(username):
 
     while True:
         try:
-            survival_location = input("Which do you choose? A or B? ")
+            survival_location = input("Which do you choose? A or B? \n")
 
             if survival_location == "A":
                 print_by_letter("\nIt was a trap! The bunker explodes.")
@@ -219,7 +219,7 @@ def stay_in_wild(username):
 
     while True:
         try:
-            zombie_choice = input("A or B? ")
+            zombie_choice = input("A or B? \n")
 
             if zombie_choice == "A":
                 print_by_letter("\nAll zombies were wiped out by the A-team!")
@@ -263,7 +263,7 @@ def zombie_weapon_choice(username):
 
     while True:
         try:
-            truck_or_cloak = input("Which do you choose? A or B? ")
+            truck_or_cloak = input("Which do you choose? A or B? \n")
 
             if truck_or_cloak == "A":
                 print_by_letter("\nGood choice!")
@@ -312,7 +312,7 @@ def cloak_weapon(username):
 
     while True:
         try:
-            final_earth_decision = input("Which do you choose? A or B? ")
+            final_earth_decision = input("Which do you choose? A or B? \n")
 
             if final_earth_decision == "A":
                 print_by_letter("\nYou made it to the capital alive!")
@@ -355,7 +355,7 @@ def stay_on_mars(username):
 
     while True:
         try:
-            gold_box = input("A= Open box, or B= Keep moving? ")
+            gold_box = input("A= Open box, or B= Keep moving? \n")
 
             if gold_box == "A":
                 print_by_letter("\nOh no! It was a trap!")
@@ -399,7 +399,7 @@ def keep_moving(username):
 
     while True:
         try:
-            encounter_aliens = input("Please choose A or B: ")
+            encounter_aliens = input("Please choose A or B: \n")
 
             if encounter_aliens == "A":
                 print_by_letter("\nYou got this, let's go get 'em!!!")
@@ -443,7 +443,7 @@ def weapon_choice(username):
 
     while True:
         try:
-            choose_weapon = input("Hurry! What do you choose? ")
+            choose_weapon = input("Hurry! What do you choose? \n")
 
             if choose_weapon == "A":
                 print_by_letter("\nUh oh...")
@@ -484,7 +484,7 @@ def invisible_cloak(username):
 
     while True:
         try:
-            cloak_decision = input("A= Keep cloak on, or B= Take cloak off? ")
+            cloak_decision = input("A= Keep cloak on, or B= Take cloak off? \n")
 
             if cloak_decision == "A":
                 print_by_letter("\nYou made it to the secret passage!")
@@ -526,7 +526,7 @@ def rules_of_game(username):
     print_by_letter(output_str)
 
     while True:
-        answer = input("Yes or No? ")
+        answer = input("Yes or No? \n")
 
         if answer == "Yes":
             start_game(username)
@@ -547,7 +547,7 @@ def adventure_welcome():
     """
     print_by_letter("\n\tWelcome to the adventure!")
     print_by_letter("\n\tIt's almost the end of the world...\n")
-    username = input("\nWho is playing? ")
+    username = input("\nWho is playing? \n")
 
     print("_________________________")
     print_by_letter(f"\nHere we go, {username}!\n")
@@ -557,7 +557,7 @@ def adventure_welcome():
     print("C - See scoreboard")
 
     while True:
-        option = input("\nPlease choose A, B, or C: ")
+        option = input("\nPlease choose A, B, or C: \n")
 
         if option == "A":
             rules_of_game(username)
