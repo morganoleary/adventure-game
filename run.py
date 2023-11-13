@@ -2,10 +2,11 @@
 This is a fun adventure game that will take the user through a series of
 choices to see how far they can get in the game!
 """
-import gspread
-from google.oauth2.service_account import Credentials
 import time
 import os
+import gspread
+from google.oauth2.service_account import Credentials
+
 
 GOOGLE_SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,6 +25,9 @@ data = scores.get_all_values()
 
 
 def clear():
+    """
+    Function to clear the terminal when called
+    """
     os.system("clear")
 
 
@@ -51,9 +55,12 @@ def start_game(username):
     '''
     print_by_letter(output_str)
 
+    global score
+    score = 0
+
     while True:
         try:
-            location_choice = input("\nWhere do you want to go? \n")
+            location_choice = input("\nWhere do you want to go? \n").upper()
 
             if location_choice == "A":
                 print("\n__________")
@@ -67,13 +74,17 @@ def start_game(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
-def end_game():
-    print("You made it to the end! Game over.")
+def end_game(username):
+    """
+    Function to end game and print scoreboard
+    """
+    print("You made it to the end!")
+    print(f"{username}, your final score is {score}!")
 
 
 def gain_one_point(username):
@@ -81,12 +92,16 @@ def gain_one_point(username):
     Function to add one point to score
     and update leaderboard
     """
-    score = 0
+    global score
+    score += 1
+
     print("\n_________________________")
     print("\n*** You managed to stay alive. Earn one point. ***\n")
     print("_________________________")
     print_by_letter(f"\n{username}, your score is now {score}.\n")
     print("_________________________\n")
+
+    return score
 
 
 def lose_one_point(username):
@@ -94,13 +109,17 @@ def lose_one_point(username):
     Function to remove one point from score
     and update leaderboard. Game is over.
     """
-    score = 0
+    global score
+    score -= 1
+
     print("\n_________________________")
     print("\n*** You didn't make it... Lose one point. ***\n")
     print("_________________________")
     print("\nSorry, game over.")
     print_by_letter(f"\n{username}, your score is now {score}.\n")
     print("_________________________\n")
+
+    return score
 
 
 def go_to_mars(username):
@@ -132,7 +151,7 @@ def go_to_mars(username):
 
     while True:
         try:
-            decision_one = input("What do you want to do? \n")
+            decision_one = input("What do you want to do? \n").upper()
 
             if decision_one == "A":
                 print_by_letter("\nOh, how brave of you...")
@@ -144,9 +163,11 @@ def go_to_mars(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
+
+    return score
 
 
 def stay_on_earth(username):
@@ -165,6 +186,7 @@ def stay_on_earth(username):
     Things have taken a turn for the worse and natural disasters
     are hitting every continent at once!
     Will you be able to survive Earth's final years if it's THIS bad?
+
     There is an underground bunker that was created to offer more
     peace for the final days...
 
@@ -176,7 +198,7 @@ def stay_on_earth(username):
 
     while True:
         try:
-            survival_location = input("Which do you choose? A or B? \n")
+            survival_location = input("Which do you choose? A or B? \n").upper()
 
             if survival_location == "A":
                 print_by_letter("\nIt was a trap! The bunker explodes.")
@@ -189,9 +211,11 @@ def stay_on_earth(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
+
+    return score
 
 
 def stay_in_wild(username):
@@ -219,7 +243,7 @@ def stay_in_wild(username):
 
     while True:
         try:
-            zombie_choice = input("A or B? \n")
+            zombie_choice = input("A or B? \n").upper()
 
             if zombie_choice == "A":
                 print_by_letter("\nAll zombies were wiped out by the A-team!")
@@ -227,14 +251,16 @@ def stay_in_wild(username):
                 break
             elif zombie_choice == "B":
                 print_by_letter("\nThe zombies were wiped out but more await.")
-                print_by_letter("coming... Time to choose your weapon.")
+                print_by_letter("Time to choose your weapon...")
                 zombie_weapon_choice(username)
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
+
+    return score
 
 
 def zombie_weapon_choice(username):
@@ -263,7 +289,7 @@ def zombie_weapon_choice(username):
 
     while True:
         try:
-            truck_or_cloak = input("Which do you choose? A or B? \n")
+            truck_or_cloak = input("Which do you choose? A or B? \n").upper()
 
             if truck_or_cloak == "A":
                 print_by_letter("\nGood choice!")
@@ -273,15 +299,18 @@ def zombie_weapon_choice(username):
                 break
             elif truck_or_cloak == "B":
                 print_by_letter("\nAll ammunition is seized by the government")
-                print_by_letter("You are left with nothing.")
+                print_by_letter("\nYou are left with nothing. ")
                 print_by_letter("Zombies attack and you die.")
                 lose_one_point(username)
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
+
+    return score
+
 
 
 def cloak_weapon(username):
@@ -312,11 +341,11 @@ def cloak_weapon(username):
 
     while True:
         try:
-            final_earth_decision = input("Which do you choose? A or B? \n")
+            final_earth_decision = input("Which do you choose? A or B? \n").upper()
 
             if final_earth_decision == "A":
                 print_by_letter("\nYou made it to the capital alive!")
-                end_game()
+                end_game(username)
                 break
             elif final_earth_decision == "B":
                 print_by_letter("\nTurns out you weren't completely alone...")
@@ -325,9 +354,9 @@ def cloak_weapon(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def stay_on_mars(username):
@@ -355,7 +384,7 @@ def stay_on_mars(username):
 
     while True:
         try:
-            gold_box = input("A= Open box, or B= Keep moving? \n")
+            gold_box = input("A= Open box, or B= Keep moving? \n").upper()
 
             if gold_box == "A":
                 print_by_letter("\nOh no! It was a trap!")
@@ -369,9 +398,9 @@ def stay_on_mars(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def keep_moving(username):
@@ -389,7 +418,7 @@ def keep_moving(username):
     They are coming at you from all angles!
 
     We have only 2 options here.
-    Would you ratherfight back and...
+    Would you rather fight back and...
     A= Choose a weapon, or
     B= Surrender and try to make friends?
 
@@ -399,22 +428,22 @@ def keep_moving(username):
 
     while True:
         try:
-            encounter_aliens = input("Please choose A or B: \n")
+            encounter_aliens = input("Please choose A or B: \n").upper()
 
             if encounter_aliens == "A":
                 print_by_letter("\nYou got this, let's go get 'em!!!")
                 weapon_choice(username)
                 break
             elif encounter_aliens == "B":
-                print_by_letter("\nIt was a trap!")
+                print_by_letter("\nIt was a trap!\n")
                 print_by_letter("Humans can't be friends with Aliens.")
                 lose_one_point(username)
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def weapon_choice(username):
@@ -443,7 +472,7 @@ def weapon_choice(username):
 
     while True:
         try:
-            choose_weapon = input("Hurry! What do you choose? \n")
+            choose_weapon = input("Hurry! What do you choose? \n").upper()
 
             if choose_weapon == "A":
                 print_by_letter("\nUh oh...")
@@ -457,9 +486,9 @@ def weapon_choice(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def invisible_cloak(username):
@@ -484,11 +513,11 @@ def invisible_cloak(username):
 
     while True:
         try:
-            cloak_decision = input("A= Keep cloak on, or B= Take cloak off? \n")
+            cloak_decision = input("A= Keep cloak on, or B= Take cloak off? \n").upper()
 
             if cloak_decision == "A":
                 print_by_letter("\nYou made it to the secret passage!")
-                end_game()
+                end_game(username)
                 break
             elif cloak_decision == "B":
                 print_by_letter("\nThe aliens can see everything!")
@@ -498,9 +527,9 @@ def invisible_cloak(username):
                 break
             else:
                 print("_________________________")
-                print("Invalid.\nPlease choose either capital A or B.")
+                print("Invalid.\nPlease choose either A or B.")
         except ValueError:
-            print("Invalid.\nPlease choose either capital A or B.")
+            print("Invalid.\nPlease choose either A or B.")
 
 
 def rules_of_game(username):
@@ -526,7 +555,7 @@ def rules_of_game(username):
     print_by_letter(output_str)
 
     while True:
-        answer = input("Yes or No? \n")
+        answer = input("Yes or No? \n").upper()
 
         if answer == "Yes":
             start_game(username)
@@ -557,7 +586,7 @@ def adventure_welcome():
     print("C - See scoreboard")
 
     while True:
-        option = input("\nPlease choose A, B, or C: \n")
+        option = input("\nPlease choose A, B, or C: \n").upper()
 
         if option == "A":
             rules_of_game(username)
