@@ -19,10 +19,6 @@ SCOPED_CREDS = CREDS.with_scopes(GOOGLE_SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('adventure_scoreboard')
 
-scores = SHEET.worksheet('scoreboard')
-
-data = scores.get_all_values()
-
 
 def clear():
     """
@@ -83,12 +79,25 @@ def start_game(username):
             print("Invalid.\nPlease choose either A or B.")
 
 
+def update_scoreboard(username, score):
+    """
+    Function to be called at the end of the game to add
+    username and final score to scoreboard google sheet
+    """
+    print("Updating scoreboard...")
+    scores = SHEET.worksheet('scoreboard')
+    scores.append_row([username, score])
+    print("The scoreboard will be printed to the terminal...")
+
+
 def end_game(username):
     """
     Function to end game and print scoreboard
     """
     print("\n\tYou made it to the end!")
     print(f"\n\t{username}, your final score is {score}!")
+
+    update_scoreboard(username, score)
 
 
 def gain_one_point(username):
@@ -122,6 +131,7 @@ def lose_one_point(username):
     print("\nSorry, game over.")
     print_by_letter(f"\n{username}, your score is now {score}.\n")
     print("_________________________\n")
+    update_scoreboard(username, score)
 
     return score
 
