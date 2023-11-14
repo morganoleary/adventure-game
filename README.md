@@ -21,10 +21,10 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 - Welcome message with menu to learn about the game
 - Rules can be accessed from this menu to allow the user to choose their first move
 - A scoreboard spreadsheet has been implemented to keep track of the users score
-- User is given clear exceptions when input is invalid and offers a resubmission of input
+- User is given clear exceptions when input is invalid or empty and offers a resubmission of input
 - The story output is delayed so that the text is typed out and offers better user experience and readability
 - The terminal is cleared after each move to all for better user experience and clear readability
-- **User is able to type "exit" to restart the game at any chosen point**
+- When input is requested, the user is able to type "exit" to restart the game at any chosen point
 
 ## Bugs & Errors
 
