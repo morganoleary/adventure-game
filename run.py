@@ -31,7 +31,6 @@ def clear():
 def print_by_letter(output_str):
     """
     Function to read the text to the user and simplify user experience
-    *This idea was brought into place with the help of my mentor*
     """
     for char in output_str:
         print(char, end='', flush=True)
@@ -44,8 +43,8 @@ def start_game(username):
     User must choose an option
     """
     clear()
-    output_str = '''
-    Welcome to the end of the world as we know it.
+    output_str = f'''
+    Welcome to the end of the world as we know it, {username}.
     You have the option to either go to Mars and start a new world,
     or stay on Earth for it's final 5 years.
 
@@ -58,7 +57,9 @@ def start_game(username):
 
     while True:
         try:
-            location_choice = input("\nWhere do you want to go? \n").upper()
+            location_choice = input(
+                f"\n{username}, Where do you want to go? \n"
+                ).upper()
 
             if location_choice == "A":
                 print("\n__________")
@@ -87,9 +88,10 @@ def update_scoreboard(username, score):
     username and final score to scoreboard google sheet
     """
     print("Updating scoreboard...")
+    time.sleep(.5)
     scores = SHEET.worksheet('scoreboard')
     scores.append_row([username, score])
-    print("See how your score compares to other users!")
+    print(f"\n{username}, see how your score compares to other users!")
     display_scoreboard()
 
 
@@ -126,6 +128,8 @@ def gain_one_point(username):
     print("\n_________________________")
     print("\n*** You managed to stay alive. Earn one point. ***\n")
     print("_________________________")
+    time.sleep(1.5)
+    clear()
     print_by_letter(f"\n{username}, your score is now {score}.\n")
     print("_________________________\n")
 
@@ -143,7 +147,9 @@ def lose_one_point(username):
     print("\n_________________________")
     print("\n*** You didn't make it... Lose one point. ***\n")
     print("_________________________")
-    print("\nSorry, game over.")
+    print_by_letter("\nSorry, game over.")
+    time.sleep(1.5)
+    clear()
     print_by_letter(f"\n{username}, your score is now {score}.\n")
     print("_________________________\n")
     update_scoreboard(username, score)
@@ -184,14 +190,19 @@ def go_to_mars(username):
 
             if decision_one == "A":
                 print_by_letter("\nOh, how brave of you...")
+                time.sleep(.5)
                 stay_on_mars(username)
                 break
             elif decision_one == "B":
-                print_by_letter("\nEarth couldn't have gotten worse...")
+                print_by_letter(
+                    "\nEarth couldn't have gotten worse... Could it?"
+                    )
+                time.sleep(.5)
                 stay_on_earth(username)
                 break
             elif decision_one.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -233,15 +244,18 @@ def stay_on_earth(username):
 
             if survival_location == "A":
                 print_by_letter("\nIt was a trap! The bunker explodes.")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif survival_location == "B":
                 print_by_letter("\nThe whole bunker just exploded!\nWhew!")
                 print_by_letter("\nGood thing you chose to stay in the wild!")
+                time.sleep(.5)
                 stay_in_wild(username)
                 break
             elif survival_location.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -280,15 +294,18 @@ def stay_in_wild(username):
 
             if zombie_choice == "A":
                 print_by_letter("\nAll zombies were wiped out by the A-team!")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif zombie_choice == "B":
                 print_by_letter("\nThe zombies were wiped out but more await.")
                 print_by_letter("\nTime to choose your weapon...")
+                time.sleep(.5)
                 zombie_weapon_choice(username)
                 break
             elif zombie_choice.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -330,16 +347,19 @@ def zombie_weapon_choice(username):
                 print_by_letter("\nGood choice!")
                 print_by_letter("\nThe government just seized all ammunition!")
                 print_by_letter("\nThe truck would have been no use.")
+                time.sleep(.5)
                 cloak_weapon(username)
                 break
             elif truck_or_cloak == "B":
                 print_by_letter("\nAll ammunition is seized by the government")
                 print_by_letter("\nYou are left with nothing. ")
                 print_by_letter("\nZombies attack and you die.")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif truck_or_cloak.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -383,15 +403,18 @@ def cloak_weapon(username):
 
             if final_earth_decision == "A":
                 print_by_letter("\nYou made it to the capital alive!")
+                time.sleep(.5)
                 end_game(username)
                 break
             elif final_earth_decision == "B":
                 print_by_letter("\nTurns out you weren't completely alone...")
                 print_by_letter("\nA group of zombies spot and kill you.")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif final_earth_decision.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -431,15 +454,18 @@ def stay_on_mars(username):
             if gold_box == "A":
                 print_by_letter("\nOh no! It was a trap!")
                 print_by_letter("\nThe box exploded and you die.")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif gold_box == "B":
                 print_by_letter("\nWise choice.")
                 print_by_letter("\nThat would have been too easy!")
+                time.sleep(.5)
                 keep_moving(username)
                 break
             elif gold_box.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -478,15 +504,18 @@ def keep_moving(username):
 
             if encounter_aliens == "A":
                 print_by_letter("\nYou got this, let's go get 'em!!!")
+                time.sleep(.5)
                 weapon_choice(username)
                 break
             elif encounter_aliens == "B":
                 print_by_letter("\nIt was a trap!\n")
                 print_by_letter("Humans can't be friends with Aliens.")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif encounter_aliens.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -522,20 +551,25 @@ def weapon_choice(username):
 
     while True:
         try:
-            choose_weapon = input("\nHurry! What do you choose? \n").upper()
+            choose_weapon = input(
+                f"\nHurry, {username}! What do you choose? \n"
+                ).upper()
 
             if choose_weapon == "A":
                 print_by_letter("\nUh oh...\n")
                 print_by_letter("The aliens shut down all Earthly technology!")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif choose_weapon == "B":
                 print_by_letter("\nWhew! Close one!")
                 print_by_letter("\nAll technology has been shut down!")
+                time.sleep(.5)
                 invisible_cloak(username)
                 break
             elif choose_weapon.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -573,16 +607,19 @@ def invisible_cloak(username):
 
             if cloak_decision == "A":
                 print_by_letter("\nYou made it to the secret passage!")
+                time.sleep(.5)
                 end_game(username)
                 break
             elif cloak_decision == "B":
                 print_by_letter("\nThe aliens can see everything!")
                 print_by_letter("\nThey spotted you.")
                 print_by_letter("\nYou are now captured forever...")
+                time.sleep(.5)
                 lose_one_point(username)
                 break
             elif cloak_decision.upper() == "EXIT":
                 print_by_letter("\nRestarting the game...")
+                time.sleep(.5)
                 adventure_welcome()
                 break
             else:
@@ -618,15 +655,17 @@ def rules_of_game(username):
         answer = input("\nMenu or Exit? \n").lower()
 
         if answer == "menu":
-            print("Going to main menu.")
+            print("\nGoing to main menu.")
+            time.sleep(.5)
             main_menu(username)
         elif answer == "exit":
             print_by_letter("\nRestarting the game...")
+            time.sleep(.5)
             adventure_welcome()
         else:
             print("_________________________")
-            print_by_letter(f"\nInvalid input: {answer}.")
-            print("Please enter 'Menu' or 'Exit'.")
+            print_by_letter(f"\nInvalid input: {answer}.\n")
+            print("\nPlease enter 'Menu' or 'Exit'.")
 
 
 def adventure_welcome():
@@ -642,7 +681,7 @@ def adventure_welcome():
         username = input("\nWho is playing? \n")
 
         if not username:
-            print("Please enter your name.")
+            print("\nPlease enter your name.")
             continue
         else:
             break
@@ -655,17 +694,19 @@ def choice_after_option_c(username):
     """
     while True:
         print_by_letter("\nGo to main menu or exit and restart?\n")
-        answer = input("\nPlease type 'Menu' or 'Exit'. \n").lower()
+        answer = input("\n'Menu' or 'Exit'? \n").lower()
 
         if answer == "menu":
-            print("Going to main menu.")
+            print("\nGoing to main menu.")
+            time.sleep(.5)
             main_menu(username)
         elif answer == "exit":
             print_by_letter("\nRestarting the game...")
+            time.sleep(.5)
             adventure_welcome()
         else:
             print("_________________________")
-            print_by_letter(f"\nInvalid input: {answer}.")
+            print_by_letter(f"\nInvalid input: {answer}.\n")
             print("\nPlease enter 'Menu' or 'Exit'.")
 
 
@@ -676,7 +717,7 @@ def main_menu(username):
     clear()
     print("_________________________")
     print_by_letter(f"\nHere we go, {username}!\n")
-    print_by_letter("Please choose what you would like to do:\n")
+    print_by_letter("\nPlease choose what you would like to do:\n")
     print("\nA - See rules of game")
     print("B - Start game")
     print("C - See scoreboard\n")
@@ -689,17 +730,21 @@ def main_menu(username):
             break
         elif option == "B":
             print_by_letter("\nStarting game...")
+            time.sleep(.5)
             start_game(username)
             break
         elif option == "C":
             clear()
             print_by_letter("\nHang tight while we get the scoreboard...\n")
+            time.sleep(.3)
             display_scoreboard()
             print_by_letter("\nWhat do you want to do next?\n")
+            time.sleep(.5)
             choice_after_option_c(username)
             break
         elif option == "EXIT":
             print_by_letter("\nRestarting the game...")
+            time.sleep(.5)
             adventure_welcome()
             break
         else:
