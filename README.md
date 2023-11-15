@@ -165,6 +165,8 @@ Welcome to my adventure game! This app was created solely with Python and deploy
     - Manual deploy means your app will only deploy when you choose and click "Deploy Branch"
 16. Once the build is complete, a link will be provided that you can click on to access a new window with your deployed app!
 
+The deployed, live version of this app can be found here: [Deployed App - Adventure Game](https://morgan-adventure-game-82970373e96f.herokuapp.com/)
+
 ### Fork repository
 
 - Forking a repository allows you to create a copy to GitHub, and any changes made will not affect the original repository:
