@@ -92,10 +92,10 @@ def update_scoreboard(username, score):
     scores = SHEET.worksheet('scoreboard')
     scores.append_row([username, score])
     print(f"\n{username}, see how your score compares to other users!")
-    display_scoreboard()
+    display_scoreboard(username)
 
 
-def display_scoreboard():
+def display_scoreboard(username):
     """
     Function called when user wants to see scoreboard
     Information pulled from google sheet
@@ -105,6 +105,7 @@ def display_scoreboard():
     user_score = scoreboard_output[1:]
     table = tabulate(user_score, headers=headers, tablefmt="simple_outline")
     print(table)
+    choice_after_option_c(username)
 
 
 def end_game(username):
@@ -124,7 +125,7 @@ def gain_one_point(username):
     """
     global score
     score += 1
-
+    clear()
     print("\n_________________________")
     print("\n*** You managed to stay alive. Earn one point. ***\n")
     print("_________________________")
@@ -143,7 +144,7 @@ def lose_one_point(username):
     """
     global score
     score -= 1
-
+    clear()
     print("\n_________________________")
     print("\n*** You didn't make it... Lose one point. ***\n")
     print("_________________________")
@@ -706,7 +707,7 @@ def choice_after_option_c(username):
             adventure_welcome()
         else:
             print("_________________________")
-            print_by_letter(f"\nInvalid input: {answer}.\n")
+            print_by_letter(f"\nInvalid input: You entered, {answer}.\n")
             print("\nPlease enter 'Menu' or 'Exit'.")
 
 
@@ -737,7 +738,7 @@ def main_menu(username):
             clear()
             print_by_letter("\nHang tight while we get the scoreboard...\n")
             time.sleep(.3)
-            display_scoreboard()
+            display_scoreboard(username)
             print_by_letter("\nWhat do you want to do next?\n")
             time.sleep(.5)
             choice_after_option_c(username)

@@ -1,6 +1,8 @@
 # Adventure Game
 
-Welcome to my adventure game! This app was created solely with Python and deployed with Heroku. This game is designed to create an enjoyable, option-based, adventure and allow users to choose their own path to see if they can get the highest score! Whether you are looking for ideas to create your own adventure game or if you are just looking for a fun adventure, this app is for you!
+Welcome to my adventure game! This app was created solely with Python and deployed with Heroku. This game is designed to create an enjoyable, option-based, adventure and allow users to choose their own path to see if they can get the highest score! 
+
+This game is geared towards all age groups and audiences. Whether you are looking for ideas to create your own adventure game or if you are just looking for a fun adventure, this app is for you!
 
 ## User Stories
 - As a player, I want to be able to see clear rules for the game in order to know the objectives.
@@ -17,22 +19,94 @@ Welcome to my adventure game! This app was created solely with Python and deploy
 
 ## Features
 
-- Welcome message with menu to learn about the game
-- Rules can be accessed from this menu to to explain the game
-- From Rules, the user is able to go back to the Main Menu to choose the next step
-- The story output is delayed so that the text is typed out and offers better user experience and readability
-- The terminal is cleared after each move to all for better user experience and clear readability
-- A scoreboard spreadsheet has been implemented to keep track of the users score
-- User is given clear exceptions when input is invalid or empty and offers a resubmission of input
-- When input is requested, the user is able to type "exit" to restart the game at any chosen point
+- The adventure begins with a welcome message and requests a name from the user to begin the game
+![Welcome message](.devcontainer/assets/readme-images/welcome_username.png)
+
+- Once the user enters their name, a menu with options to navigate through the game appears
+![Menu](.devcontainer/assets/readme-images/menu.png)
+
+- Rules can be accessed from this menu to to explain the game so that the user is given all the information necessary
+- From Rules, the user is able to go back to the Main Menu to choose the next option and start the game or exit and restart the game to enter a new username
+![Rules](.devcontainer/assets/readme-images/rules.png)
+
+- The user is given a choice to view the scoreboard before starting the game to see their competitors scores
+![Scoreboard](.devcontainer/assets/readme-images/see_scoreboard.png)
+
+- The story can be started from the main menu and jumps right into requesting an option from the user
+![Store start](.devcontainer/assets/readme-images/start_game.png)
+
+- The game requests options of A or B throughout the adventure to provide consistent requests to the user
+
+- The story output is delayed to give the user time to read all material and also delays each character of the words so that the text is typed out and offers better user experience and readability
+
+- The terminal is cleared after each move to allow for better user experience and clear readability
+
+- The game uses expressive and detailed language to allow the user to be immersed into the story
+![Expressive language](.devcontainer/assets/readme-images/story_expressive.png)
+
+- When the user chooses the correct answer they are shown a message to explain they survived and gained a point towards their overall score
+![Correct message](.devcontainer/assets/readme-images/correct_message.png)
+
+- The score is updated and can be seen in the terminal while the story plays out to allow the user to always know their current score
+![Score updated message](.devcontainer/assets/readme-images/score_updates.png)
+
+- When the user chooses the incorrect answer they are shown a message to explain the game is over and that they lost a point towards their overall score
+![Incorrect message](.devcontainer/assets/readme-images/lose_message.png)
+
+- A scoreboard spreadsheet has been implemented to keep track of the users score. This was created with Google Sheets and connected with an API
+![Google Sheet](.devcontainer/assets/readme-images/google_sheet.png)
+
+- The scoreboard is automatically printed, in chart view, to the terminal when the users game is over to show them their results, compared to other players. Once the scoreboard is printed, the game offers the user the choice to go back to the menu and choose from the options again or exit and restart the game as a new player
+![Scoreboard with users score](.devcontainer/assets/readme-images/end_scoreboard_updated.png)
+
+- The user is given clear exceptions when input is invalid or empty and offers a resubmission of input (more examples in testing section)
+![Incorrect input example](.devcontainer/assets/readme-images/incorrect_input_2.png)
+
+- The input requests allow for upper and lowercase letters to provide a better user experience
+
+- When input is requested, the user is able to type "exit" to restart the game at any chosen point and is taken to the very beginning to reenter a new username
 
 ## Testing
 
-- Manual testing currently being carried out...
+- Game begins and when prompted for a username, if the input is empty when entered, it requests a name from the user.
+![Username input error message](.devcontainer/assets/readme-images/welcome_username_empty.png)
+
+- When in the main menu, the user is asked to enter an option: A, B, or C. When the input is any value other than A, B, or C, OR when the input is empty, the user is prompted that the input is invalid and asks them to only enter A, B, or C. Lowercase letters are allowed for better user experience.
+![Menu invalid input](.devcontainer/assets/readme-images/menu_invalid.png)
+
+- If the customer navigates to rules, they are prompted to choose to either go back to the main menu or exit and restart the game. 
+
+    - The exceptions catch if the input is incorrect:
+![Rules invalid](.devcontainer/assets/readme-images/rules_invalid.png)
+
+    - The exceptions also catch if the input is empty:
+![Rules input empty](.devcontainer/assets/readme-images/rules_invalid_empty.png)
+
+- When the user chooses to see the scoreboard, they are then given the option to go back to the main menu or exit and restart the game, where the input catches exceptions
+
+    - The exceptions catch if the input is empty:
+![Scoreboard empty input](.devcontainer/assets/readme-images/scoreboard_input_empty.png)
+
+    - The exceptions also catch if the input is invalid. These exceptions tell the user what was entered so they can see their mistake:
+![Scoreboard invalid input](.devcontainer/assets/readme-images/scoreboard_invalid_input.png)
+
+- When the user starts the game, the story asks for input of the users choice. The input request catches exceptions when the input is empty or invalid:
+
+    - Empty input:
+![Empty input warning](.devcontainer/assets/readme-images/start_empty_input.png)
+
+    - Invalid input:
+![Invalid input warning](.devcontainer/assets/readme-images/start_invalid_input.png)
+
+    - These input requests will accept upper or lowercase letters
+
+- When testing, I tried to break the code in every way possible by entering invalid data of letters, words, numbers, characters and empty input. No issues occurred and all exceptions where caught when testing manually
+
 
 ### Validator testing
 
-- No errors were found when the code was run through [CI Python Linter](https://pep8ci.herokuapp.com/)
+- No errors were found when the code was run through  [CI Python Linter](https://pep8ci.herokuapp.com/)
+![PEP8](.devcontainer/assets/readme-images/pep8.png)
 
 ### Bugs & Errors
 
