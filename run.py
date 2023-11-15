@@ -89,6 +89,14 @@ def update_scoreboard(username, score):
     scores = SHEET.worksheet('scoreboard')
     scores.append_row([username, score])
     print("See how your score compares to other users!")
+    display_scoreboard()
+
+
+def display_scoreboard():
+    """
+    Function called when user wants to see scoreboard
+    Information pulled from google sheet
+    """
     scoreboard_output = SHEET.worksheet('scoreboard').get_all_values()
     headers = scoreboard_output[0]
     user_score = scoreboard_output[1:]
@@ -606,7 +614,7 @@ def rules_of_game(username):
     print_by_letter(output_str)
 
     while True:
-        answer = input("\nDone reading? \n").lower()
+        answer = input("\nMenu or Exit? \n").lower()
 
         if answer == "menu":
             print("Going to main menu.")
@@ -640,6 +648,26 @@ def adventure_welcome():
     main_menu(username)
 
 
+def choice_after_option_c(username):
+    """
+    Function called to allow user to choose next step after viewing scoreboard
+    """
+    while True:
+        print_by_letter("\nGo to main menu or exit and restart?\n")
+        answer = input("\nPlease type 'Menu' or 'Exit'. \n").lower()
+
+        if answer == "menu":
+            print("Going to main menu.")
+            main_menu(username)
+        elif answer == "exit":
+            print_by_letter("\nRestarting the game...")
+            adventure_welcome()
+        else:
+            print("_________________________")
+            print_by_letter(f"\nInvalid input: {answer}.")
+            print("\nPlease enter 'Menu' or 'Exit'.")
+
+
 def main_menu(username):
     """
     Function to provide main menu options to user
@@ -663,8 +691,15 @@ def main_menu(username):
             start_game(username)
             break
         elif option == "C":
-            print_by_letter("\nHang tight while we tally up the scoreboard...")
-            print("Scoreboard (from google spreadsheet)")
+            clear()
+            print_by_letter("\nHang tight while we get the scoreboard...\n")
+            display_scoreboard()
+            print_by_letter("\nWhat do you want to do next?\n")
+            choice_after_option_c(username)
+            break
+        elif option == "EXIT":
+            print_by_letter("\nRestarting the game...")
+            adventure_welcome()
             break
         else:
             print("_________________________")
