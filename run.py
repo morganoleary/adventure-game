@@ -6,6 +6,7 @@ import time
 import os
 import gspread
 from google.oauth2.service_account import Credentials
+from tabulate import tabulate
 
 
 GOOGLE_SCOPE = [
@@ -87,7 +88,12 @@ def update_scoreboard(username, score):
     print("Updating scoreboard...")
     scores = SHEET.worksheet('scoreboard')
     scores.append_row([username, score])
-    print("The scoreboard will be printed to the terminal...")
+    print("See how your score compares to other users!")
+    scoreboard_output = SHEET.worksheet('scoreboard').get_all_values()
+    headers = scoreboard_output[0]
+    user_score = scoreboard_output[1:]
+    table = tabulate(user_score, headers=headers, tablefmt="simple_outline")
+    print(table)
 
 
 def end_game(username):

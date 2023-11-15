@@ -41,6 +41,9 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
 
 ## Testing
 
+## Modules imported
+- [Tabulate](https://pypi.org/project/tabulate/) was used to print the scoreboard as a table at the end of the users game.
+
 ## Deployment
 
 ## Credits
@@ -52,3 +55,4 @@ This game is designed to create an enjoyable, option-based, adventure and allow 
     - [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#Exception)
 - Python styling guidance was from [How to Write Beautiful Python Code With PEP 8](https://realpython.com/python-pep8/)
 - [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/) was referenced to create function to clear terminal.
+- [How to set up a scoring system](https://www.youtube.com/watch?v=3IE2TMMeytU) was referenced when creating the scoring system for this game. I also contacted tutor support for additional assistance.
