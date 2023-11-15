@@ -1,8 +1,6 @@
 # Adventure Game
 
-Welcome to my adventure game! This app was created solely with Python and deployed with Heroku. This game is designed to create an enjoyable, option-based, adventure and allow users to choose their own path to see if they can get the highest score! 
-
-This game is geared towards all age groups and audiences. Whether you are looking for ideas to create your own adventure game or if you are just looking for a fun adventure, this app is for you!
+Welcome to my adventure game! This app was created solely with Python and deployed with Heroku. This game is designed to create an enjoyable, option-based, adventure and allow users to choose their own path to see if they can get the highest score! Whether you are looking for ideas to create your own adventure game or if you are just looking for a fun adventure, this app is for you!
 
 ## User Stories
 - As a player, I want to be able to see clear rules for the game in order to know the objectives.
@@ -115,9 +113,21 @@ This game is geared towards all age groups and audiences. Whether you are lookin
     - I used Slack and this [GitHub Doc](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message) to try to amend the issue with "git rebase -i HEAD~n". This became increasingly confusing.
     - Tutor support was contacted and advised that -'Having an incorrect message is a much smaller problem than trying to change your commit.'- and everything should be working normally, but that Codeanywhere seemed to have a glitch as I wasn't able to save new updates and use the advised "git push --force" command. I was then told to create a new workspace and I was up and running again. 
     - I was not able to rename the commit message and was advised to add a note to my README file.
+
 - While creating the exceptions throughout the story, depending on user input, I began using if/elif/else statements inside while True: loops. This was causing the 'else' statement to print indefinitely as the while loop did not have an end point.
     - I implemented try and except statements within my while loops so that the loop could be exited.
+
 - When updating my rules_of_game function, the loop would not end and continually asked the user for input, even when the input seemed correct. This was because I was using .upper() and trying to get a 'Yes' or 'No' answer from the user. I ended up changing the function to implement a more user friendly approach and ensuring separation of concerns, so the 'Yes' and 'No' were no longer necessary. However, I did learn that .upper() will only check against uppercase input options, while .lower() will only check against lowercase input options. 
+
+- All code passed the PEP8 criteria with no issues, however I am receiving some linting errors when pylint run.py is run in the terminal:
+    - The first message is "Global variable 'score' undefined at the module level (global-variable-undefined)" 
+        - I worked with the tutoring team to move the variable "score" outside of the start_game function and renamed it in all caps to SCORE as it had to meet casing standards. 
+        - However, when I did this and renamed all variables 'score' to 'SCORE', it gave me a parsing syntax error on all of my output_str strings and tutot support said it looked like the indentation was the issue even though nothing had been changed. 
+    - The second message was regarding my if, elif, else blocks within my functions. 
+        - I worked with tutor support here as well and tried to remove the "breaks" (which cleared the error message) but then the code kept looping as there were no breaks
+        - Removing the 'el' from 'elif' broke the whole program, although that was the message: "Unnecessary "elif" after "break", remove the leading "el" from "elif" (no-else-break)"
+    - I was advised to add these bugs to my README.md file as there was no clear solution to either that fixed my code to remove these warnings. 
+    - All code passed the PEP8 Linter with no issues to report.
 
 #### Notes
 
