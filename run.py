@@ -31,6 +31,7 @@ def clear():
 def print_by_letter(output_str):
     """
     Function to read the text to the user and simplify user experience
+    *This idea was brought into place with the help of my mentor*
     """
     for char in output_str:
         print(char, end='', flush=True)
