@@ -601,27 +601,23 @@ def rules_of_game(username):
     If at any stage you wish to end your adventure and restart the
     game, please type 'EXIT' into the terminal.
 
-    Now...  do you dare play the game?
+    Please type 'Menu' when you are done reading the rules.
     '''
     print_by_letter(output_str)
 
     while True:
-        answer = input("\nYes or No? \n").upper()
+        answer = input("\nDone reading? \n").lower()
 
-        if answer == "Yes":
-            start_game(username)
-            break
-        elif answer == "No":
-            print_by_letter("\nI guess you'll never know how it ends!")
-            print_by_letter("\nGoodbye.")
-            break
-        elif answer.upper() == "EXIT":
+        if answer == "menu":
+            print("Going to main menu.")
+            main_menu(username)
+        elif answer == "exit":
             print_by_letter("\nRestarting the game...")
             adventure_welcome()
-            break
         else:
             print("_________________________")
-            print_by_letter("\nPlease enter...")
+            print_by_letter(f"\nInvalid input: {answer}.")
+            print("Please enter 'Menu' or 'Exit'.")
 
 
 def adventure_welcome():
@@ -641,7 +637,13 @@ def adventure_welcome():
             continue
         else:
             break
+    main_menu(username)
 
+
+def main_menu(username):
+    """
+    Function to provide main menu options to user
+    """
     clear()
     print("_________________________")
     print_by_letter(f"\nHere we go, {username}!\n")
